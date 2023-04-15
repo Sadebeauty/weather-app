@@ -19,6 +19,7 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
+  return `${day} ${hour}:${minutes}`;
 }
 function displayWeather(response) {
   console.log(response.data);
@@ -35,7 +36,7 @@ function displayWeather(response) {
   cloudLogo = document.querySelector(".cloud-logo");
   cloudLogo.innerHTML = response.data.condition.icon;
   dateElement = document.querySelector("#date");
-  dateElement.innerHTML = response.data.date;
+  dateElement.innerHTML = formatDate(response.data.time * 1000);
 }
 let apiKey = "83f2f0t26352d3o664bcf8a01bce4fa7";
 let apiUrl =
