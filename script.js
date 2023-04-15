@@ -1,4 +1,25 @@
 /** @format */
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    hour = `0${minutes}`;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+}
 function displayWeather(response) {
   console.log(response.data);
   temperatureElement = document.querySelector("#temperature");
@@ -13,6 +34,8 @@ function displayWeather(response) {
   descriptionElement.innerHTML = response.data.condition.description;
   cloudLogo = document.querySelector(".cloud-logo");
   cloudLogo.innerHTML = response.data.condition.icon;
+  dateElement = document.querySelector("#date");
+  dateElement.innerHTML = response.data.date;
 }
 let apiKey = "83f2f0t26352d3o664bcf8a01bce4fa7";
 let apiUrl =
