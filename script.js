@@ -37,9 +37,12 @@ function displayWeather(response) {
   cloudLogo.innerHTML = response.data.condition.icon;
   dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.time * 1000);
+  iconElement = document.querySelector("#icon");
+  iconElement.setAttribute = response.data.condition.icon;
 }
 let apiKey = "83f2f0t26352d3o664bcf8a01bce4fa7";
+let defaultCity = "Lagos";
 let apiUrl =
-  "https://api.shecodes.io/weather/v1/current?query={Ibadan}}&key=83f2f0t26352d3o664bcf8a01bce4fa7";
-console.log(apiUrl);
+  "https://api.shecodes.io/weather/v1/current?query=ibadan&key=83f2f0t26352d3o664bcf8a01bce4fa7";
+
 axios.get(apiUrl).then(displayWeather);
