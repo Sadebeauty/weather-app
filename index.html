@@ -23,14 +23,10 @@
   </head>
   <body>
     <div class="container">
-      <div
-        class="card"
-        style="width: 35rem">
+      <div class="card" style="width: 35rem">
         <div class="card-body"></div>
         <form id="city-search">
-          <input
-            type="search"
-            id="city-form" />
+          <input type="search" id="city-form" />
           <button type="submit">Submit</button>
         </form>
         <div class="row">
@@ -42,30 +38,17 @@
             <div class="d-flex weather-temperature"></div>
             <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-night.png"
               alt=" clear"
-              id="icon" /><span id="temperature"></span
-            ><span id="units"
-              >°C
-             
-          </div>
+              id="icon"  width="100px"/><span id="temperature"></span
+            ><span id="units">°C
+            </div>
           <div class="col-4">
             <span>Humidity:</span> <span id="humidity"></span>%
             <br />
             <span>Wind:</span><span id="wind"></span>km/h
           </div>
-          <div class="row">
-            <div class="col-2">
-              <div class="weather-forecast">
-                <div class="forecast-day">Tue
-<img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-night.png" width="80" />
-<div class="forecast-temp">
-  <span class="forecast-temp-max">36°</span>
-  <span class="forecast-temp-min">24°</span>
-</div>
-              </div>
-            </div>
-          </div>
-        </div>
+         <div class="weather-forecast" id="forecast"></div>
       </div>
+    </div>
     </div>
 
     <small>
