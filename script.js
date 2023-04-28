@@ -44,6 +44,7 @@ function displayForecast() {
 }
 function displayWeather(response) {
   console.log(response.data);
+  console.log(response.data.coordinates);
   temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   cityElement = document.querySelector("#city");
@@ -61,6 +62,14 @@ function displayWeather(response) {
   iconElement = document.querySelector("#icon");
   iconElement.setAttribute("src", response.data.condition.icon_url);
 }
+function predictForecast(coordinates) {
+  let apiKey = "83f2f0t26352d3o664bcf8a01bce4fa7";
+  let lon = "response.data.coordinates.longitude";
+  let lat = "response.data.coordinates.longitude";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=83f2f0t26352d3o664bcf8a01bce4fa7&unit=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function search(city) {
   let apiKey = "83f2f0t26352d3o664bcf8a01bce4fa7";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=83f2f0t26352d3o664bcf8a01bce4fa7`;
