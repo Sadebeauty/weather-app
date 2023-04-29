@@ -21,8 +21,10 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hour}:${minutes}`;
 }
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   forecastElement = document.querySelector("#forecast");
+
   let forecastHTML = `<div class="row">`;
   let days = ["Tue", "Wed", "Thur", "Fri", "Sat"];
   days.forEach(function (day) {
@@ -42,9 +44,16 @@ function displayForecast() {
 
   forecastElement.innerHTML = forecastHTML;
 }
+
+function predictForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "83f2f0t26352d3o664bcf8a01bce4fa7";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=83f2f0t26352d3o664bcf8a01bce4fa7&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayWeather(response) {
   console.log(response.data);
-  console.log(response.data.coordinates);
   temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   cityElement = document.querySelector("#city");
@@ -61,13 +70,8 @@ function displayWeather(response) {
   dateElement.innerHTML = formatDate(response.data.time * 1000);
   iconElement = document.querySelector("#icon");
   iconElement.setAttribute("src", response.data.condition.icon_url);
-}
-function predictForecast(coordinates) {
-  let apiKey = "83f2f0t26352d3o664bcf8a01bce4fa7";
-  let lon = "response.data.coordinates.longitude";
-  let lat = "response.data.coordinates.longitude";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=83f2f0t26352d3o664bcf8a01bce4fa7&unit=metric`;
-  axios.get(apiUrl).then(displayForecast);
+
+  predictForecast(response.data.coordinates);
 }
 
 function search(city) {
@@ -87,4 +91,3 @@ let form = document.querySelector("#city-search");
 form.addEventListener("submit", citySubmit);
 
 search("Ibadan");
-displayForecast();
